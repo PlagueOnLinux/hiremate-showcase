@@ -146,7 +146,7 @@ Most job search tools send your CV and preferences to cloud APIs. HireMate runs 
 **Maciej Błędowski**
 
 - Portfolio: [maciejbledowski.pl](https://maciejbledowski.pl)
-- GitHub: [@PlagueBoomer](https://github.com/PlagueBoomer)
+- GitHub: [@PlagueOnLinux](https://github.com/PlagueOnLinux)
 - LinkedIn: [maciejbledowski](https://linkedin.com/in/maciejbledowski)
 
 ---
