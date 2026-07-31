@@ -48,7 +48,7 @@ HireMate is not a mass-apply bot. It is a controlled assistant that works alongs
        └──────┬──────┘
               ↓
        ┌─────────────┐
-       │Recommendation│  apply / maybe / reject + reasoning
+       │  Recommend  │   apply / maybe / reject + reasoning
        └──────┬──────┘
               ↓
        ┌─────────────┐
@@ -99,6 +99,12 @@ HireMate is not a mass-apply bot. It is a controlled assistant that works alongs
 
 ### Sprint 2.8+
 
+**Currently Building**
+
+- Application package generation (CV tailoring, recruiter messages, interview prep)
+- Improved AI scoring accuracy (comparison-based approach)
+- Progress indicators for long-running AI tasks
+
 **Completed**
 
 - Full job offer CRUD with dashboard
@@ -112,12 +118,6 @@ HireMate is not a mass-apply bot. It is a controlled assistant that works alongs
 - AI prescreening with background processing
 - GPS distance calculation for job locations
 - Playwright browser integration
-
-**Currently Building**
-
-- Application package generation (CV tailoring, recruiter messages, interview prep)
-- Improved AI scoring accuracy (comparison-based approach)
-- Progress indicators for long-running AI tasks
 
 **Next Milestones**
 
@@ -150,11 +150,11 @@ HireMate is not a mass-apply bot. It is a controlled assistant that works alongs
 
 Most job search tools require uploading your CV to cloud services. HireMate takes a different approach:
 
-- **Complete privacy** — CV, preferences, and application history never leave your machine
-- **No external uploads** — No data sent to OpenAI, Google, or any third-party API
-- **Local LLM execution** — All AI processing runs on your hardware via Ollama
-- **No subscription fees** — Unlimited analyses without per-request costs
-- **Full data ownership** — You control every piece of your information
+- **Complete privacy** — Your data never leaves your machine
+- **No external uploads** — Nothing sent to OpenAI, Google, or third-party APIs
+- **Local LLM execution** — All inference runs on your hardware via Ollama
+- **No subscription fees** — Unlimited analyses at zero cost
+- **Full data ownership** — You control all of your information
 - **No rate limits** — Iterate as fast as your hardware allows
 
 ---
@@ -217,12 +217,11 @@ Job Source (URL / paste / manual)
 
 ## Project Goals
 
-- Reduce time spent on repetitive job search activities
-- Keep candidate data fully private with no cloud AI dependencies
-- Use local LLM inference instead of paid API services
-- Help users make informed application decisions based on real skill matching
-- Provide honest gap analysis rather than generic encouragement
-- Support the full application lifecycle from discovery to outcome
+- Build a privacy-first AI career assistant
+- Keep all personal data under user control
+- Reduce repetitive work during job applications
+- Provide transparent AI recommendations with clear reasoning
+- Support the complete application lifecycle from discovery to outcome
 
 ---
 
