@@ -15,14 +15,14 @@ HireMate works as your personal recruitment analyst. It imports offers, compares
 
 ## What It Does
 
-HireMate is not a mass-apply bot. It is a controlled assistant that works alongside you through the full job search cycle:
+HireMate guides you through the complete application lifecycle — from discovering a job offer to tracking its outcome. It is not a mass-apply bot. It is a controlled assistant that keeps you in the loop at every step.
 
 1. **Import** — Bring in job offers from URLs, pasted descriptions, or manual entry
-2. **Parse** — AI extracts structured data: title, company, salary, contract type, work mode, requirements
-3. **Compare** — Each offer is scored against your CV with career fit and realistic match ratings
-4. **Detect Gaps** — Identifies missing requirements, experience mismatches, and stretch opportunities
-5. **Recommend** — AI generates a clear recommendation with risk level and application strategy
-6. **Track** — Manage applications through the full pipeline: new → to apply → applied → interview → outcome
+2. **Parse** — AI extracts structured data from raw job descriptions
+3. **Compare** — Score each offer against your CV
+4. **Detect Gaps** — Identify missing requirements and stretch opportunities
+5. **Recommend** — Receive a clear recommendation with reasoning
+6. **Track** — Manage applications through the full pipeline
 
 ---
 
@@ -192,61 +192,43 @@ Job Source (URL / paste / manual)
 
 ## Tech Stack
 
-**Backend**
-- Python
-- FastAPI
-
-**AI**
-- Ollama
-- qwen3:8b (selected after model benchmarking)
-
-**Database**
-- PostgreSQL 17
-
-**Frontend**
-- Jinja2 (server-rendered)
-- Vanilla JS
-
-**Automation**
-- Playwright (Chromium, headless)
-
-**Infrastructure**
-- Docker Compose
+| Layer | Technology |
+|-------|-----------|
+| Backend | Python, FastAPI |
+| AI | Ollama (local), qwen3:8b |
+| Database | PostgreSQL 17 |
+| Frontend | Jinja2, Vanilla JS |
+| Automation | Playwright (Chromium, headless) |
+| Infrastructure | Docker Compose |
 
 ---
 
 ## Project Goals
 
-- Build a privacy-first AI career assistant
-- Keep all personal data under user control
-- Reduce repetitive work during job applications
-- Provide transparent AI recommendations with clear reasoning
-- Support the complete application lifecycle from discovery to outcome
+- Privacy-first by design — personal data stays under user control
+- Local AI processing without reliance on cloud services
+- Full ownership of candidate data at all times
+- Transparent AI recommendations with clear reasoning
+- Automation of repetitive job-search tasks while keeping humans in control
 
 ---
 
 ## Design Philosophy
 
-HireMate is built around a few core principles:
-
-- Local-first by default — privacy is not optional
-- AI should explain its recommendations, not just output a number
-- Humans stay in control of every application decision
-- Honest assessment over optimistic scoring
-- Modular architecture that can evolve independently
+HireMate is guided by the belief that AI should assist decision-making, not replace it. Privacy and transparency are core principles — users remain in full control of their data and every application decision they make. Local processing is preferred whenever possible, ensuring that sensitive career information never leaves the user's machine. The purpose of automation is to reduce repetitive work, not to remove the human from the process.
 
 ---
 
 ## Author
 
-**Maciej Bledowski**
+**Maciej Bledowski** — IT Support Engineer
 
-- Portfolio: [maciejbledowski.pl](https://maciejbledowski.pl)
-- GitHub: [@PlagueOnLinux](https://github.com/PlagueOnLinux)
+- Website: [maciejbledowski.pl](https://maciejbledowski.pl)
 - LinkedIn: [maciejbledowski](https://linkedin.com/in/maciejbledowski)
+- GitHub: [@PlagueOnLinux](https://github.com/PlagueOnLinux)
 
 ---
 
 ## License
 
-This project is not open source. This repository serves as a public showcase of the project's scope, architecture, and development progress.
+Released under the MIT License.
