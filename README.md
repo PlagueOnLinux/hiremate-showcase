@@ -1,65 +1,161 @@
 # HireMate
 
-**A local-first AI assistant for job searching and application management.**
+**Local-first AI job search assistant that analyzes job offers, matches them against your profile, and helps manage your entire application pipeline — while keeping your data completely private.**
 
-HireMate helps you find relevant job offers, analyze them against your profile, identify skill gaps, and prepare applications — all while keeping your data private and the final decision in your hands.
+HireMate works as your personal recruitment analyst. It imports offers, compares them against your CV using a local LLM, detects skill gaps, calculates realistic match probabilities, and gives you actionable recommendations — without ever sending your data to an external service.
 
-> This is the public showcase repository. The source code is maintained in a private repository.
+---
+
+> **Public Showcase Repository**
+>
+> This repository contains architecture, documentation, development progress and feature overviews.
+> The production source code is maintained in a private repository.
 
 ---
 
 ## What It Does
 
-HireMate is not a mass-apply bot. It's a controlled assistant that works with you:
+HireMate is not a mass-apply bot. It's a controlled assistant that works alongside you through the full job search cycle:
 
-1. **Collect** — Import job offers from URLs, pasted text, or add them manually
-2. **Analyze** — AI extracts job requirements, salary, contract type, and work mode
-3. **Score** — Each offer is scored against your profile with career fit and realistic match ratings
-4. **Gap Analysis** — Identifies missing requirements, experience mismatches, and stretch opportunities
-5. **Recommend** — AI generates a recommendation with risk level and application notes
-6. **Track** — Full application pipeline: new → to apply → applied → interview → offer / rejected
+1. **Import** — Bring in job offers from URLs (Pracuj.pl, LinkedIn, company sites), pasted descriptions, or manual entry
+2. **Parse** — AI extracts structured data: title, company, salary, contract type, work mode, requirements
+3. **Compare** — Each offer is scored against your CV with career fit and realistic match ratings
+4. **Detect Gaps** — Identifies missing requirements, experience mismatches, and stretch opportunities
+5. **Recommend** — AI generates a clear recommendation with risk level and application strategy
+6. **Track** — Manage applications through: new → to apply → applied → interview → offer / rejected
+
+---
+
+## Core Workflow
+
+```text
+         Job Offer
+             ↓
+       ┌─────────────┐
+       │   Import    │   URL fetch / paste / manual
+       └──────┬──────┘
+              ↓
+       ┌─────────────┐
+       │  AI Parser  │   Extract title, salary, requirements
+       └──────┬──────┘
+              ↓
+       ┌─────────────┐
+       │  Scoring    │   Compare CV vs. offer requirements
+       └──────┬──────┘
+              ↓
+       ┌─────────────┐
+       │ Gap Analysis│   Missing skills, experience, languages
+       └──────┬──────┘
+              ↓
+       ┌─────────────┐
+       │Recommendation│  apply / maybe / reject + reasoning
+       └──────┬──────┘
+              ↓
+       ┌─────────────┐
+       │  Tracker    │   Application status pipeline
+       └─────────────┘
+```
 
 ---
 
 ## Key Features
 
 ### AI-Powered Job Scoring
-- Dual scoring: **career fit** (how well it aligns with your goals) and **realistic match** (actual chances)
+- Dual scoring: **career fit** (alignment with your goals) and **realistic match** (actual qualification match)
 - Application chance levels: realistic / stretch / unrealistic
 - Risk assessment: low / medium / high
-- Detection of missing must-have requirements and experience gaps
+- Comparison-based approach — AI checks each requirement against your CV
 
 ### Smart Job Import
-- Import from URL — fetches page, extracts text, parses details with AI
+- Import from URL — fetches page HTML, extracts readable text, parses with AI
 - Import from pasted job description
 - AI-powered field extraction (title, company, salary, requirements, contract type)
 - Preview and edit before saving
 
 ### Candidate Profile
-- CV upload with automatic text extraction (PDF support)
+- CV upload with automatic text extraction (PDF)
 - AI analysis of skills, tools, seniority, and experience level
-- Career direction tracking (known path vs. exploring)
-- Additional notes for skills not in CV
+- Dual CV support (Polish + English)
+- Career direction tracking
+- Additional notes for skills beyond CV
 - Preferences for desired and unwanted job traits
+
+### Job Discovery
+- Automated scanning of saved search URLs
+- Multi-page crawling with pagination support
+- AI prescreening with quick scoring
+- GPS-based distance calculation from candidate location
+- Import queue with bulk actions
 
 ### Dashboard
 - Dark-themed job management interface
 - Status tracking across the full pipeline
 - Quick AI scoring from the job list
-- Detailed job view with gap analysis and AI recommendations
+- Detailed job view with gap analysis and recommendations
 
 ---
 
-## Tech Stack
+## Current Status
 
-| Component | Technology |
-|-----------|-----------|
-| Backend | Python, FastAPI |
-| Database | PostgreSQL |
-| AI Engine | Ollama (local LLM — qwen3:8b) |
-| Web Scraping | Playwright |
-| Frontend | HTMX, Jinja2 (server-rendered) |
-| Infrastructure | Docker Compose |
+### Current Version — Sprint 2.8+
+
+**Completed**
+
+- Full job offer CRUD with dashboard
+- AI scoring with career fit + realistic match dual analysis
+- Job-vs-profile gap analysis with risk levels
+- Candidate profile with CV upload and AI analysis
+- Job import from URL and pasted text
+- AI-powered job description parsing
+- Application status pipeline
+- Job source management and automated scanning
+- AI prescreening with background processing
+- GPS distance calculation for job locations
+- Playwright browser integration
+
+**Currently Building**
+
+- Application package generation (CV tailoring, recruiter messages, interview prep)
+- Improved AI scoring accuracy (comparison-based approach)
+- Loading indicators and progress tracking
+
+**Next Milestones**
+
+- Automated job discovery from saved searches with scheduling
+- Playwright-based application form assistant
+- Email alert collector
+- Duplicate detection
+- Daily summary dashboard with recommendations
+
+---
+
+## Roadmap
+
+```text
+[====================] Sprint 0 — Foundation          Done
+[====================] Sprint 1 — Job Offers MVP      Done
+[====================] Sprint 2 — AI Scoring          Done
+[====================] Sprint 2.5 — Candidate Profile Done
+[====================] Sprint 2.6 — CV Upload         Done
+[====================] Sprint 2.7 — Gap Analysis      Done
+[====================] Sprint 2.8 — Job Import        Done
+[==========          ] Sprint 3 — Application Gen.    In Progress
+[                    ] Sprint 4 — Assisted Apply
+[                    ] Future — Automated Discovery
+```
+
+---
+
+## Why Local AI?
+
+Most job search tools require you to upload your CV to cloud services. HireMate takes a different approach:
+
+- **Complete privacy** — Your CV, preferences, and application history never leave your machine
+- **No external uploads** — No data sent to OpenAI, Google, or any third-party API
+- **Local LLM execution** — All AI processing runs on your hardware via Ollama
+- **No subscription fees** — Run unlimited analyses without per-request costs
+- **Full data ownership** — You control and own every piece of your data
+- **Faster iteration** — No API rate limits, no waiting for cloud responses
 
 ---
 
@@ -76,74 +172,61 @@ Job Source (URL / paste / manual)
         ↓
     Backend API (FastAPI)
         ↓
-    Dashboard (HTMX/Jinja2)
+    Dashboard (Jinja2)
         ↓
     User Decision
 ```
 
+### Component Responsibilities
+
+| Component | Role |
+|-----------|------|
+| **Collector** | Imports job offers from URLs, pasted text, or manual entry. Handles HTML fetching, text extraction, and page crawling |
+| **Parser** | Uses local LLM to extract structured data from raw job descriptions (title, salary, requirements, contract type) |
+| **AI Engine** | Compares candidate CV against job requirements. Generates scores, gap analysis, and recommendations |
+| **Recommendation Engine** | Produces actionable output: apply/maybe/reject with reasoning and risk assessment |
+| **Tracker** | Manages application lifecycle from discovery through interview to outcome |
+| **Browser (Playwright)** | Handles JavaScript-rendered pages and provides browser automation capabilities |
+
 ### Design Principles
 
-- **Local-first** — All AI processing runs on your machine via Ollama. No data sent externally.
-- **User stays in control** — AI recommends, you decide. No automated applications.
-- **Privacy by design** — Your CV, preferences, and job history never leave your machine.
+- **Local-first** — All AI processing runs on your machine. No data sent externally.
+- **User stays in control** — AI recommends, you decide. No automated applications without consent.
+- **Privacy by design** — CV, preferences, and job history never leave your machine.
 - **Modular** — Each component (scoring, import, profile) works independently.
-- **Dockerized** — One `docker compose up` and you're running.
+- **Dockerized** — Single `docker compose up` to run the full stack.
 
 ---
 
-## Current Status
+## Tech Stack
 
-**Active development — Sprint 2.8 complete.**
-
-### Completed
-- Full job offer CRUD with dashboard
-- AI scoring with career fit + realistic match dual analysis
-- Job-vs-profile gap analysis with risk levels
-- Candidate profile with CV upload and AI analysis
-- Job import from URL and pasted text
-- AI-powered job description parsing and field extraction
-- Application status pipeline
-
-### In Progress
-- Application package generation (CV tailoring notes, recruiter messages)
-- Structured AI output formatting
-
-### Planned
-- Automated job discovery from saved searches
-- Playwright-based application form assistant
-- Email alert collector
-- Duplicate detection
-- Daily summary dashboard
+| Layer | Technology |
+|-------|-----------|
+| **Backend** | Python, FastAPI |
+| **Database** | PostgreSQL 17 |
+| **AI** | Ollama, qwen3:8b (selected after model benchmarking) |
+| **Browser** | Playwright (Chromium, headless) |
+| **Frontend** | Jinja2 templates, server-rendered HTML |
+| **PDF Processing** | PyMuPDF |
+| **Infrastructure** | Docker Compose |
+| **Version Control** | Git, GitHub |
 
 ---
 
-## Roadmap
+## Project Goals
 
-```text
-[====================] Sprint 0 — Foundation          ✓
-[====================] Sprint 1 — Job Offers MVP      ✓
-[====================] Sprint 2 — AI Scoring          ✓
-[================    ] Sprint 2.5-2.8 — Profile & Import (90%)
-[                    ] Sprint 3 — Application Generation
-[                    ] Sprint 4 — Assisted Applications
-[                    ] Future — Automated Discovery
-```
-
----
-
-## Why Local AI?
-
-Most job search tools send your CV and preferences to cloud APIs. HireMate runs entirely on your hardware:
-
-- **Ollama** handles all LLM inference locally
-- **qwen3:8b** selected after benchmarking for best accuracy/speed balance
-- Your data stays on your machine — period
+- Reduce time spent on repetitive job search activities
+- Keep candidate data fully private — no cloud AI dependencies
+- Use local LLM inference instead of paid API services
+- Help users make informed application decisions based on real skill matching
+- Provide honest gap analysis — not just encouragement
+- Support the full application lifecycle from discovery to outcome tracking
 
 ---
 
 ## Author
 
-**Maciej Błędowski**
+**Maciej Bledowski**
 
 - Portfolio: [maciejbledowski.pl](https://maciejbledowski.pl)
 - GitHub: [@PlagueOnLinux](https://github.com/PlagueOnLinux)
@@ -153,4 +236,4 @@ Most job search tools send your CV and preferences to cloud APIs. HireMate runs 
 
 ## License
 
-This project is not open source. This repository serves as a public showcase of the project's scope and architecture.
+This project is not open source. This repository serves as a public showcase of the project's scope, architecture, and development progress.
